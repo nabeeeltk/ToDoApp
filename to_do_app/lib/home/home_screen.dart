@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/home/widget/seach_box.dart';
+import 'package:to_do_app/home/widget/to_do_item.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -9,7 +11,7 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 244, 243, 239),
         appBar: AppBar(
           title: const Text(
-            "TodleDo ",
+            "ToDoList",
             style: TextStyle(color: Color.fromARGB(255, 111, 109, 109)),
           ),
           centerTitle: true,
@@ -23,25 +25,29 @@ class HomeScreen extends StatelessWidget {
         ),
         body:Container(
           padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Column(
+          child:  Column(
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.white
-                ),
-                child: const TextField(decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(0),
-                  prefixIcon: Icon(Icons.search,color: Colors.black,),
-                  prefixIconConstraints: BoxConstraints(maxHeight: 20,minWidth: 25),
-                  border: InputBorder.none,
-                  hintText: 'Search'
-                ),
-                ),
-              )
+           const   SearchBox(),
+             Expanded(
+               child: ListView(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(top: 50),
+                    child:const Text("All ToDo List",
+                    style: TextStyle(color: Colors.black,
+                    fontSize: 25,fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  const ToDoItem(),
+                  
+             
+                ],
+               ),
+             )
             ],
           ),
         ) ,
         );
   }
+     
 }
